@@ -1,0 +1,94 @@
+<div class="side-bar">
+
+  <form role="search" method="get" class="search-form" action="/search/">
+    <input value="Search for" name="s" class="s query" type="search">
+  </form>
+
+
+  <div class="sidebox">
+    <div class="sidebox-title">
+      热门文章
+    </div>
+
+    <div class="sidebox-content">
+      <ul class="list-unstyled">
+        {% for hot in hot_list %}
+        <li><a href="{{hot.get_absolute_url}}">{{hot.title}}</a></li>
+        {% endfor%}
+      </ul>
+    </div>
+  </div>
+
+  <div class="sidebox">
+    <div class="sidebox-title">
+      最新评论
+    </div>
+
+    <div class="sidebox-content">
+      <div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="0" data-show-admin="1" data-excerpt-length="70"></div>
+    </div>
+
+  </div>
+
+  <div class="sidebox">
+    <div class="sidebox-title">
+      文章归档
+    </div>
+
+    <div class="sidebox-content">
+      <ul class="list-unstyled">
+        
+
+        {% for x,y in date_list %}
+        <li><a href="{% url 'archive_month' year=x.year month=x.month %}">{{x.year}}年{{x.month}}月({{y}})</a></li>
+        {% endfor %}
+
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="sidebox">
+    <div class="sidebox-title">
+      分类目录
+    </div>
+
+    <div class="sidebox-content">
+      <ul class="list-unstyled">
+        {% for x,y in category_list %}
+        <li><a href="{% url 'category' category=x %}">{{x}}({{y}})</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div> 
+
+  <div class="sidebox">
+    <div class="sidebox-title">
+      标签
+    </div>
+
+    <div class="sidebox-content">
+      <ul class="list-unstyled">
+        {% for x,y in tag_list %}
+        <li><a href="{% url 'tag' tag=x %}">{{x}}({{y}})</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>    
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lengchenyu1"};
+      (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0] 
+           || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+  </script>          
+
+</div> 

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}
+  COLDE:  HOME
+{% endblock title %}
+
+{% block content %}
+
+{% if error %}
+  <style type="text/css">
+    #empty{
+      text-align: center;
+    }
+  </style>
+  <div class="simple-post" id='empty'>
+    <h2 >没有匹配文章</h2>
+  </div>
+{% else %}
+{% for article in articles %}
+<div class="simple-post">
+  
+  <div class="post-info">
+    <span class="glyphicon glyphicon-calendar"></span>
+    <span class="post-date">{{article.publish_time.year}}年{{article.publish_time.month}}月{{article.publish_time.day}}日</span>
+    <span class="number">{{article.count}}  浏览</span>
+
+  </div>
+
+
+  <h1 class="article-tilte">
+    <a href="{{article.get_absolute_url}}">
+      {{article.title}}
+    </a>
+  </h1>
+
+  <div class="post-img">
+    <img src="{{MEDIA_URL}}{{ article.img.url }}" alt=""  width='100%'>
+  </div>
+
+  <div class="post-introduce">
+    <div class="abstract">
+      {{article.abstract | safe}}
+    </div>
+  </div>
+
+  <div class="post-foot">
+    <span class="glyphicon glyphicon-folder-close" ></span>
+    <span><a href="{{article.classification.get_absolute_url}}">{{article.classification}}&nbsp;&nbsp;</a> </span>
+    <span class="glyphicon glyphicon-tags"></span>
+
+    {% for tag in article.get_tags %}
+    <span><a href="{{tag.get_absolute_url}}">&nbsp;{{tag}}&nbsp;</a></span>
+    {% endfor %}
+
+    <a class="readmore" href="{{ article.get_absolute_url}}"><span class='read'>阅读全文</span><span class='glyphicon glyphicon-eye-open'></span></a>
+  </div>
+</div>
+
+{% endfor%}
+{% endif %}
+
+
+
+
+
+<ul class="pagination pagination-lg">
+  {% if articles.paginator.num_pages > 1 %}
+    {% if articles.has_previous %}
+    <li>
+      <a href="?page={{ articles.previous_page_number}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% endif %}
+    
+    {% for page in articles.paginator.page_range %}
+      {% if page = articles.number %}  
+        <li class='active'><a>{{page}}</a></li>     
+      {% else %}
+        <li><a href="?page={{page}}">{{page}}</a></li>  
+      {% endif %}  
+    {% endfor %}
+
+    {% if articles.has_next %}
+    <li>
+      <a href="?page={{articles.next_page_number}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% endif %}
+  {% endif %}
+
+</ul>
+
+{% endblock %}
+
+{% block side %}
+	{% include "side.html" %}
+{% endblock %}
+
+{% block index %}
+  <script type="text/javascript">
+    $("#home").addClass("active");
+  </script>
+{% endblock index %}

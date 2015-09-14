@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+  COLDE:  ARCHIVES
+{% endblock title %}
+
+{% block content %}
+	{% for x, y, z in archives %}
+	  <div class="simple-post">
+	     <h2 class='m_archive_tille'><i class='fa fa-archive'></i>&nbsp;{{x.year}}年{{x.month}}月</h2>
+	     <ul class="list-unstyled m_archive">
+	       {% for article in z %} 
+	       <li><a href="{{article.get_absolute_url}}">{{article.publish_time.year}}年{{article.publish_time.month}}月{{article.publish_time.day}}日&nbsp;&nbsp;{{article.title}}</a></li>
+	       {% endfor %}
+	     </ul>
+	  </div>
+	{% endfor %}
+{% endblock content %}
+
+{% block side %}
+	{% include "side.html" %}
+{% endblock side %}
+
+{% block index %}
+  <script type="text/javascript">
+    $("#archives").addClass("active");
+  </script>
+{% endblock index %}

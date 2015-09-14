@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ STATIC_URL }}img/Snowflake.png">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css">
+    <!-- Custom styles for this template -->
+
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/my_blog.css">
+
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/my_blog_phone.css">
+
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/moblie_menu.css">
+
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}sh/styles/shCore.css"/>
+
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}sh/styles/shCoreRDark.css"/>
+
+    <script type="text/javascript" src="{{ STATIC_URL }}sh/scripts/shCore.js"></script>
+
+    <script type="text/javascript" src="{{ STATIC_URL }}sh/scripts/shBrushPython.js"></script>
+
+    <script type="text/javascript" src="{{ STATIC_URL }}sh/scripts/shBrushJava.js"></script>
+
+    <script type="text/javascript" src="{{ STATIC_URL }}sh/scripts/shBrushCss.js"></script>
+
+    <script type="text/javascript" src="{{ STATIC_URL }}sh/scripts/shBrushCpp.js"></script>
+
+    <script type="text/javascript" src="{{ STATIC_URL }}sh/scripts/shBrushJScript.js"></script>
+
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+   
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+  
+    
+  </head>
+
+  <body>
+    {% load staticfiles %}
+    <div class="moblie-menu">
+      <ul class="list-unstyled">
+        <li><a href="{% url 'home' %}">HOME</a></li>
+        <li><a href="{% url 'archive' %}">ARCHIVES</a></li>
+        <li><a href="{% url 'message' %}">MESSAGE</a></li>
+        <li><a href="{% url 'about' %}">ABOUT</a></li>
+        <li><a href="">GITHUB</a></li>
+        <li><a href="{% url 'rss' %}">RSS</a></li>
+      </ul>  
+    </div> 
+
+    <div class="blog">
+      
+
+
+      <div class="burger">
+        <div class="x"></div>
+        <div class="y"></div>
+        <div class="z"></div>
+      </div>       
+
+
+      <div class="scanlines"></div>
+
+      <div class="jumbotron">
+        <div class="logo">
+          COLDE
+        </div>
+      </div>
+
+      <div class="menu container">
+        <ul class="list-unstyled list-inline">
+          <li><a href="{% url 'home' %}" id='home'>HOME</a></li>
+          <li><a href="{% url 'archive' %}" id='archives'>ARCHIVES</a></li>
+          <li><a href="{% url 'message' %}" id='message'>MESSAGE</a></li> 
+          <li><a href="{% url 'about' %}" id='about'>ABOUT</a></li>
+          <li class='rss-logo'><a href="{% url 'rss' %}"><i class="fa fa-rss fa-lg"></i></a></li>
+          <li class='rss-logo'><a href=""><i class="fa fa-github fa-lg"></i></a></li>
+        </ul>
+        
+
+
+      </div>
+      
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="articles col-md-8 ">
+              {% block content %}
+              {% endblock %}    
+
+              {% block comment %}
+              {% endblock %} 
+            </div>
+
+            <div class="col-md-4 ">
+              {% block side %}
+              {% endblock %}
+            </div>
+            
+
+            
+        </div>
+
+        
+
+        
+      </div>
+    </div>
+    
+
+    
+  </body>
+
+  <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+ 
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="{{ STATIC_URL }}js/moblie_menu.js"></script>
+  
+  <script type="text/javascript" src="{{ STATIC_URL }}js/up.js"></script>
+
+  <script type="text/javascript" src="{{ STATIC_URL }}js/base.js"></script>
+
+  <script type="text/javascript">
+
+  </script>
+
+  
+  {% block index %}
+   
+  {% endblock index %}
+
+</html>

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+  COLDE:  ARTICLE
+{% endblock title %}
+
+{% block content %}
+<div class="simple-post">
+  
+  <div class="post-info">
+    <span class="glyphicon glyphicon-calendar"></span>
+    <span class="post-date">{{article.publish_time.year}}年{{article.publish_time.month}}月{{article.publish_time.day}}日</span>
+    <span class="number">{{article.count}}  浏览</span>
+
+  </div>
+
+
+  <h1 class="article-tilte">{{article.title}}</h1>
+
+  <div class="post-img">
+    <img src="{{MEDIA_URL}}{{ article.img.url }}" alt=""  width='100%'>
+  </div>
+
+  <div class="post-introduce">
+    <div class="abstract">
+      {{article.content|safe}}
+    </div>
+  </div>
+
+  <div class="post-foot">
+    <span class="glyphicon glyphicon-folder-close" ></span>
+    <span><a href="{{article.classification.get_absolute_url}}">{{article.classification}}&nbsp;&nbsp;</a> </span>
+    <span class="glyphicon glyphicon-tags"></span>
+
+    {% for tag in article.get_tags %}
+    <span><a href="{{tag.get_absolute_url}}">&nbsp;{{tag}}&nbsp;</a></span>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+<ul class="list-unstyled list-inline article-pignation">
+  {% if article.get_before_article %}
+    {% with before=article.get_before_article %}
+      <li class='article-left'><a href="{{before.get_absolute_url}}"><img src="{{ STATIC_URL }}img/left.png" alt=""  class='guide'><span class="guide">上一篇：</span>&nbsp;{{before}}</a></li>                          
+    {% endwith %}
+
+  {% endif %}
+
+  {% if article.get_after_article %}
+    {% with after=article.get_after_article %}
+      <li class='article-right'><a href="{{after.get_absolute_url}}"><span class="guide">下一篇：&nbsp;</span>{{after}}&nbsp;<img src="{{ STATIC_URL }}img/right.png" alt=""  class='guide'></a></li>  
+    {% endwith %}
+  {% endif %}
+  
+</ul>
+{% endblock %}
+
+{% block comment %}
+	{% include "comment.html" %}
+{% endblock %}
+
+{% block side %}
+	{% include "side.html" %}
+{% endblock %}
+

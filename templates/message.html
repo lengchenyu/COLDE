@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+  COLDE:  MESSAGE
+{% endblock title %}
+
+
+{% block content %}
+	<div class="simple-post img" >
+	  <img class="message" src='{{STATIC_URL}}img/thank.jpg'  width='100%'>
+	    
+	  </img>
+	</div>
+{% endblock content %}
+
+{% block comment %}
+	<div class="ds-thread" data-thread-key="message" data-title="message" data-url=""></div>
+	<!-- 多说评论框 end -->
+
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lengchenyu1"};
+	    (function() {
+	        var ds = document.createElement('script');
+	        ds.type = 'text/javascript';ds.async = true;
+	        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	        ds.charset = 'UTF-8';
+	        (document.getElementsByTagName('head')[0] 
+	         || document.getElementsByTagName('body')[0]).appendChild(ds);
+	    })();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
+	<style type="text/css">
+	  #ds-thread #ds-reset .ds-login-buttons .ds-more-services{
+	    color: #c29e6c !important;
+	  }
+	</style>
+{% endblock comment %}
+
+{% block side %}
+	{% include "side.html" %}
+{% endblock side %}
+
+{% block index %}
+  <script type="text/javascript">
+    $("#message").addClass("active");
+  </script>
+{% endblock index %}
+

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+  COLDE:  ABOUT
+{% endblock title %}
+
+{% block content %}
+	<style type="text/css">
+		.about p{
+			font-size: 17px;
+			margin-bottom: 40px;
+		}
+
+		.about h2{
+			border-left: 5px solid #c29e6c;
+			margin-bottom: 15px;
+		}
+	</style>
+	<div class="simple-post about">
+		<h2>&nbsp&nbsp关于我</h2>
+		<p>大家好，我叫冷宸宇，华南师范大学 2015 年应届毕业生，现在主要使用 Python ，并结合 Django 框架进行 web 开发，然后个人对于‘美’有强烈的追求，所以也学习了相应的前端知识，尽量把自己产品设计得漂亮点，将来希望结合 Python，从事与数据挖掘和机器学习的相关研究</p>
+		<h2>&nbsp&nbsp关于 COLDE</h3>
+		<p>由于我名字叫冷宸宇，接下来的一生都做会与代码打交道，并且喜欢码字与别人分享，所以就结合冷的英文单词 COLD 和代码 CODE 起来，得到了这个英文名。然后希望自己不断积累技术，和阅读各种各样书籍，成为像 MacTalk 池建强， Fenng 这些互联网业界的大牛，不仅码得一手好代码，而且知识面超广涉猎丰富，能写得一手好文章。</p>
+		<h2>&nbsp&nbsp关于本站</h3>
+		<p>本博客使用 Python 和 Django 框架进行开发，也是作为自己学习 Python 和 Django 之后的总结和应用，为了展示自己博客的效果，把自己认为一些很值得推荐的微信公众号，放在博客上，如果这些公众号大部分你也关注了，也许我们的兴趣会很相似。</p>
+
+	</div>
+{% endblock content %}
+
+{% block side %}
+	{% include "side.html" %}
+{% endblock side %}
+
+{% block index %}
+  <script type="text/javascript">
+    $("#about").addClass("active");
+  </script>
+{% endblock index %}
